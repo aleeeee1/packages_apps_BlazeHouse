@@ -261,4 +261,8 @@
     <!-- Less boring heads up -->
     <string name="less_boring_heads_up_title">Priority heads up</string>
     <string name="less_boring_heads_up_summary">Show heads up only for calls, messages, alarms, reminders and priority conversations</string>
+
+
+    <!-- QS Tiles haptic -->
+    <string name="qs_tiles_haptic_feedback_title">Vibrate on touching QS tiles</string>    
 </resources>
