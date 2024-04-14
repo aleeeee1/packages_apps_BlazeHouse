@@ -20,6 +20,13 @@
     <PreferenceCategory
         android:title="@string/category_name_qs_tiles">
 
+    <com.blaze.house.preferences.SystemSettingListPreference
+        android:key="qs_panel_style"
+        android:title="@string/qs_panel_style_title"
+        android:entries="@array/qs_panel_style_entries"
+        android:entryValues="@array/qs_panel_style_values"
+        android:defaultValue="0" />
+
 	<com.blaze.house.preferences.SecureSettingListPreference
             android:key="qs_style_round"
             android:title="@string/qs_style_title"
