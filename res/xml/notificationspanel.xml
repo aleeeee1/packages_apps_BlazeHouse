@@ -83,6 +83,11 @@
             android:summary="@string/island_notification_summary"
             android:fragment="com.blaze.house.fragments.IslandSettings" />
 
+	<com.blaze.house.preferences.SystemSettingSwitchPreference
+            android:key="notification_material_dismiss"
+            android:title="@string/notification_material_dismiss_title"
+            android:summary="@string/notification_material_dismiss_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
