@@ -507,4 +507,9 @@
     <!-- Clock show seconds -->
     <string name="status_bar_clock_show_seconds_title">Clock show seconds</string>
     <string name="status_bar_clock_show_seconds_desc">Show hours, minutes, and seconds</string>
+
+    <!-- Custom settings dashboard style -->
+    <string name="settings_dashboard_style_title">Settings Styles</string>
+    <string name="settings_dashboard_style_1">New UI (Currently in Android 14)</string>
+    <string name="settings_dashboard_style_2">Old UI (Previously in Android 12.1 and 13)</string>
 </resources>
