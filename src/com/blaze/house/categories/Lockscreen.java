@@ -17,7 +17,23 @@
 package com.blaze.house.categories;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.os.UserHandle;
+import android.provider.Settings;
+import android.text.TextUtils;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.SwitchPreference;
+import android.view.IWindowManager;
+import android.view.View;
+import android.view.WindowManagerGlobal;
 import com.android.internal.util.everest.udfps.CustomUdfpsUtils;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
@@ -31,6 +47,10 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
     private static final String TAG = "Lockscreen";
     private static final String UDFPS_CATEGORY = "udfps_category";
+    private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
+
+    private FingerprintManager mFingerprintManager;
+    private SwitchPreference mFingerprintVib;
 
     private PreferenceCategory mUdfpsCategory;
 
@@ -46,6 +66,16 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 	//Handle NPE on UdfpsCategory being null
         if (mUdfpsCategory != null && !CustomUdfpsUtils.hasUdfpsSupport(getContext())) {
             prefScreen.removePreference(mUdfpsCategory);
+        }
+
+	mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        mFingerprintVib = (SwitchPreference) findPreference(FINGERPRINT_VIB);
+        if (mFingerprintManager == null) {
+            prefScreen.removePreference(mFingerprintVib);
+        } else {
+            mFingerprintVib.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.FINGERPRINT_SUCCESS_VIB, 1) == 1));
+            mFingerprintVib.setOnPreferenceChangeListener(this);
         }
     }
 
@@ -65,7 +95,12 @@ public class Lockscreen extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
+        if (preference == mFingerprintVib) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FINGERPRINT_SUCCESS_VIB, value ? 1 : 0);
+            return true;
+        }
         return true;
     }
 
