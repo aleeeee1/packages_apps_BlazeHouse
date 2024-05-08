@@ -25,6 +25,12 @@
         android:summary="@string/lockscreen_battery_info_summary"
         android:defaultValue="true" />
 
+    <Preference
+        android:key="udfps_settings"
+        android:title="@string/udfps_settings_title"
+        android:summary="@string/udfps_settings_summary"
+        android:fragment="com.blaze.house.fragments.UdfpsSettings" />
+
     <PreferenceCategory
         android:key="lockscreen_ui_finterprint_category"
         android:title="@string/fingerprint_category">
