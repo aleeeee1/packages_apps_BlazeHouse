@@ -203,7 +203,7 @@ public class UdfpsAnimation extends SettingsPreferenceFragment {
 
         @Override
         public int getItemCount() {
-            return mAnims.length;
+            return mAnims != null ? mAnims.length : 0;
         }
 
         public class UdfpsAnimViewHolder extends RecyclerView.ViewHolder {

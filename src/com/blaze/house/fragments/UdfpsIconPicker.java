@@ -188,7 +188,7 @@ public class UdfpsIconPicker extends SettingsPreferenceFragment {
 
         @Override
         public int getItemCount() {
-            return mIcons.length;
+            return mIcons != null ? mIcons.length : 0;
         }
 
         public class UdfpsIconViewHolder extends RecyclerView.ViewHolder {
