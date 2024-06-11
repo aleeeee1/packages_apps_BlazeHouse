@@ -481,7 +481,6 @@
     	<item>@string/media</item>
     	<item>@string/clock_timer</item>
         <item>@string/torch</item>
-        <item>@string/weather</item>
         <item>@string/wifi</item>
         <item>@string/data</item>
         <item>@string/ringer</item>
@@ -494,7 +493,6 @@
     	<item>media</item>
     	<item>timer</item>
         <item>torch</item>
-        <item>weather</item>
         <item>wifi</item>
         <item>data</item>
         <item>ringer</item>
